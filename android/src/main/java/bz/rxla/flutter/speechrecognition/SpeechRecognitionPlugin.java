@@ -119,9 +119,9 @@ public class SpeechRecognitionPlugin implements MethodCallHandler, RecognitionLi
     @Override
     public void onEndOfSpeech() {
         Log.d(LOG_TAG, "onEndOfSpeech");
-        if (!transcription.Equals("")) { 
+       
         speechChannel.invokeMethod("speech.onRecognitionComplete", transcription);
-        }
+       
     }
 
     @Override
@@ -161,8 +161,8 @@ public class SpeechRecognitionPlugin implements MethodCallHandler, RecognitionLi
     }
 
     private void sendTranscription(boolean isFinal) {
-        if (!transcription.Equals("")) { 
+       
         speechChannel.invokeMethod(isFinal ? "speech.onRecognitionComplete" : "speech.onSpeech", transcription);
-        }
+        
     }
 }
